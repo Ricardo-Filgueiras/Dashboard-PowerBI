@@ -1,0 +1,7 @@
+expression caminho = "C:\Users\Campeao Lub\Downloads\dados_telegram-v3.csv" meta [IsParameterQuery=true, Type="Text", IsParameterQueryRequired=true]
+	lineageTag: 27fd4bb3-dedc-41b2-a722-ef02150b48f9
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Text
+

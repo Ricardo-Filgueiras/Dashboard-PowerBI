@@ -1,0 +1,131 @@
+{
+  "config": "{\"version\":\"5.55\",\"themeCollection\":{\"baseTheme\":{\"name\":\"CY24SU06\",\"version\":\"5.55\",\"type\":2},\"customTheme\":{\"name\":\"Storm16632446496098208.json\",\"version\":\"5.55\",\"type\":1}},\"activeSectionIndex\":0,\"defaultDrillFilterOtherVisuals\":true,\"settings\":{\"useNewFilterPaneExperience\":true,\"allowChangeFilterTypes\":true,\"useStylableVisualContainerHeader\":true,\"queryLimitOption\":6,\"useEnhancedTooltips\":true,\"exportDataMode\":1,\"useDefaultAggregateDisplayName\":true},\"objects\":{\"section\":[{\"properties\":{\"verticalAlignment\":{\"expr\":{\"Literal\":{\"Value\":\"'Top'\"}}}}}],\"outspacePane\":[{\"properties\":{\"visible\":{\"expr\":{\"Literal\":{\"Value\":\"false\"}}},\"expanded\":{\"expr\":{\"Literal\":{\"Value\":\"true\"}}}}}]}}",
+  "layoutOptimization": 0,
+  "resourcePackages": [
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "CY24SU06",
+            "path": "BaseThemes/CY24SU06.json",
+            "type": 202
+          }
+        ],
+        "name": "SharedResources",
+        "type": 2
+      }
+    },
+    {
+      "resourcePackage": {
+        "disabled": false,
+        "items": [
+          {
+            "name": "Storm16632446496098208.json",
+            "path": "Storm16632446496098208.json",
+            "type": 201
+          }
+        ],
+        "name": "RegisteredResources",
+        "type": 1
+      }
+    }
+  ],
+  "sections": [
+    {
+      "config": "{\"type\":1}",
+      "displayName": "Detalhes",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 240.00,
+      "name": "207e455b662ac5f5d1b2",
+      "ordinal": 1,
+      "visualContainers": [],
+      "width": 320.00
+    },
+    {
+      "config": "{}",
+      "displayName": "Home",
+      "displayOption": 1,
+      "filters": "[]",
+      "height": 720.00,
+      "name": "9f313a0f0d578fd9cee9",
+      "visualContainers": [
+        {
+          "config": "{\"name\":\"19bf69b92a8d5ecb998f\",\"layouts\":[{\"id\":0,\"position\":{\"x\":28.88888888888889,\"y\":24.444444444444443,\"z\":7,\"width\":524.4444444444445,\"height\":84.44444444444444,\"tabOrder\":1}}],\"singleVisual\":{\"visualType\":\"textbox\",\"drillFilterOtherVisuals\":true,\"objects\":{\"general\":[{\"properties\":{\"paragraphs\":[{\"textRuns\":[{\"value\":\"\"}]}]}}]}}}",
+          "filters": "[]",
+          "height": 84.44,
+          "width": 524.44,
+          "x": 28.89,
+          "y": 24.44,
+          "z": 7.00
+        },
+        {
+          "config": "{\"name\":\"2316e601ccbe0ba8d2b9\",\"layouts\":[{\"id\":0,\"position\":{\"x\":28.88888888888889,\"y\":134.44444444444454,\"z\":3,\"width\":251.11111111111111,\"height\":88.88888888888889}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"fRegistros.user_is_bot\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fRegistros\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"user_is_bot\"},\"Name\":\"fRegistros.user_is_bot\",\"NativeReferenceName\":\"user_is_bot\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"user_is_bot\"}}}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 88.89,
+          "width": 251.11,
+          "x": 28.89,
+          "y": 134.44,
+          "z": 3.00
+        },
+        {
+          "config": "{\"name\":\"2ee59d7a8533a16edc8b\",\"layouts\":[{\"id\":0,\"position\":{\"x\":28.88888888888889,\"y\":236.6666666666666,\"z\":5,\"width\":251.11111111111111,\"height\":100}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Medidas.Qtde Mensagens\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Qtde Mensagens\"},\"Name\":\"Medidas.Qtde Mensagens\",\"NativeReferenceName\":\"Qtde Mensagens\"}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 100.00,
+          "width": 251.11,
+          "x": 28.89,
+          "y": 236.67,
+          "z": 5.00
+        },
+        {
+          "config": "{\"name\":\"3feaf1a8c26d4a19d163\",\"layouts\":[{\"id\":0,\"position\":{\"x\":28.88888888888889,\"y\":390,\"z\":0,\"width\":1222.2222222222222,\"height\":304.44444444444446}}],\"singleVisual\":{\"visualType\":\"lineChart\",\"projections\":{\"Category\":[{\"queryRef\":\"dCalendario.Date\"}],\"Y\":[{\"queryRef\":\"Medidas.Qtde Mensagens\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"d\",\"Entity\":\"dCalendario\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"},\"Name\":\"dCalendario.Date\",\"NativeReferenceName\":\"Date\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Qtde Mensagens\"},\"Name\":\"Medidas.Qtde Mensagens\",\"NativeReferenceName\":\"Qtde Mensagens\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"d\"}},\"Property\":\"Date\"}}}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 304.44,
+          "width": 1222.22,
+          "x": 28.89,
+          "y": 390.00,
+          "z": 0.00
+        },
+        {
+          "config": "{\"name\":\"8ba09c874a204cd9da89\",\"layouts\":[{\"id\":0,\"position\":{\"x\":910,\"y\":134.44444444444443,\"z\":1,\"width\":341.1111111111111,\"height\":241.11111111111111}}],\"singleVisual\":{\"visualType\":\"pieChart\",\"projections\":{\"Category\":[{\"queryRef\":\"fRegistros.chat_type\",\"active\":true}],\"Y\":[{\"queryRef\":\"Medidas.Qtde Mensagens\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fRegistros\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"chat_type\"},\"Name\":\"fRegistros.chat_type\",\"NativeReferenceName\":\"chat_type\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Qtde Mensagens\"},\"Name\":\"Medidas.Qtde Mensagens\",\"NativeReferenceName\":\"Qtde Mensagens\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"chat_type\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 241.11,
+          "width": 341.11,
+          "x": 910.00,
+          "y": 134.44,
+          "z": 1.00
+        },
+        {
+          "config": "{\"name\":\"a30204047baf007dc4a8\",\"layouts\":[{\"id\":0,\"position\":{\"x\":290.00000000000006,\"y\":236.6666666666666,\"z\":6,\"width\":263.3333333333333,\"height\":100}}],\"singleVisual\":{\"visualType\":\"card\",\"projections\":{\"Values\":[{\"queryRef\":\"Medidas.Qtde Mensagens\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Qtde Mensagens\"},\"Name\":\"Medidas.Qtde Mensagens\",\"NativeReferenceName\":\"Qtde Mensagens\"}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 100.00,
+          "width": 263.33,
+          "x": 290.00,
+          "y": 236.67,
+          "z": 6.00
+        },
+        {
+          "config": "{\"name\":\"db4436bebdd52d150dcc\",\"layouts\":[{\"id\":0,\"position\":{\"x\":290.00000000000006,\"y\":134.44444444444454,\"z\":4,\"width\":263.3333333333333,\"height\":88.88888888888889}}],\"singleVisual\":{\"visualType\":\"tableEx\",\"projections\":{\"Values\":[{\"queryRef\":\"fRegistros.user_is_bot\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fRegistros\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"user_is_bot\"},\"Name\":\"fRegistros.user_is_bot\",\"NativeReferenceName\":\"user_is_bot\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"user_is_bot\"}}}]},\"autoSelectVisualType\":true,\"drillFilterOtherVisuals\":true}}",
+          "filters": "[]",
+          "height": 88.89,
+          "width": 263.33,
+          "x": 290.00,
+          "y": 134.44,
+          "z": 4.00
+        },
+        {
+          "config": "{\"name\":\"e951c7dc0896382dace0\",\"layouts\":[{\"id\":0,\"position\":{\"x\":567.7777777777777,\"y\":134.44444444444443,\"z\":2,\"width\":331.1111111111111,\"height\":243.33333333333331}}],\"singleVisual\":{\"visualType\":\"treemap\",\"projections\":{\"Group\":[{\"queryRef\":\"fRegistros.user_first_name\",\"active\":true}],\"Values\":[{\"queryRef\":\"Medidas.Qtde Mensagens\"}]},\"prototypeQuery\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fRegistros\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"user_first_name\"},\"Name\":\"fRegistros.user_first_name\",\"NativeReferenceName\":\"user_first_name\"},{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Qtde Mensagens\"},\"Name\":\"Medidas.Qtde Mensagens\",\"NativeReferenceName\":\"Qtde Mensagens\"}],\"OrderBy\":[{\"Direction\":1,\"Expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"user_first_name\"}}}]},\"drillFilterOtherVisuals\":true}}",
+          "filters": "[{\"expression\":{\"Column\":{\"Expression\":{\"SourceRef\":{\"Entity\":\"fRegistros\"}},\"Property\":\"user_first_name\"}},\"filter\":{\"Version\":2,\"From\":[{\"Name\":\"subquery\",\"Expression\":{\"Subquery\":{\"Query\":{\"Version\":2,\"From\":[{\"Name\":\"f\",\"Entity\":\"fRegistros\",\"Type\":0},{\"Name\":\"m\",\"Entity\":\"Medidas\",\"Type\":0}],\"Select\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"user_first_name\"},\"Name\":\"field\"}],\"OrderBy\":[{\"Direction\":2,\"Expression\":{\"Measure\":{\"Expression\":{\"SourceRef\":{\"Source\":\"m\"}},\"Property\":\"Qtde Mensagens\"}}}],\"Top\":5}}},\"Type\":2},{\"Name\":\"f\",\"Entity\":\"fRegistros\",\"Type\":0}],\"Where\":[{\"Condition\":{\"In\":{\"Expressions\":[{\"Column\":{\"Expression\":{\"SourceRef\":{\"Source\":\"f\"}},\"Property\":\"user_first_name\"}}],\"Table\":{\"SourceRef\":{\"Source\":\"subquery\"}}}}}]},\"type\":\"TopN\",\"howCreated\":0,\"isHiddenInViewMode\":false}]",
+          "height": 243.33,
+          "width": 331.11,
+          "x": 567.78,
+          "y": 134.44,
+          "z": 2.00
+        }
+      ],
+      "width": 1280.00
+    }
+  ],
+  "theme": "Storm16632446496098208.json"
+}

@@ -1,0 +1,30 @@
+table dCalendario
+	lineageTag: 2dc0c41a-e0b8-42b5-be97-8541913246e5
+	dataCategory: Time
+
+	column Date
+		dataType: dateTime
+		isKey
+		formatString: General Date
+		lineageTag: 46e149d9-b898-41b2-8f0d-db58e822ab90
+		summarizeBy: none
+		isNameInferred
+		isDataTypeInferred
+		sourceColumn: [Date]
+
+		annotation SummarizationSetBy = Automatic
+
+	column mes_brev = FORMAT( dCalendario[Date] , "mmm / yyyy" )
+		dataType: string
+		lineageTag: c6b4a766-d345-4367-8a94-d3f5fdf12f12
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	partition dCalendario = calculated
+		mode: import
+		source = CALENDARAUTO()
+
+	annotation PBI_Id = 31aef10f953144b296fa0069967ed420
+

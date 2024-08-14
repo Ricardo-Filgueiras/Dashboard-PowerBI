@@ -1,0 +1,95 @@
+table fRegistros
+	lineageTag: 45cba377-4dca-481b-9a82-b61b3e935793
+
+	column message_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 3b0185b0-35b3-4c44-92d9-be5d207b6ced
+		summarizeBy: sum
+		sourceColumn: message_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 2aedce9e-ad4e-473e-b00d-dfe4a7cf4e9a
+		summarizeBy: sum
+		sourceColumn: user_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_is_bot
+		dataType: boolean
+		formatString: """TRUE"";""TRUE"";""FALSE"""
+		lineageTag: 04fe7c36-44ea-4c92-b27b-66682b50e37a
+		summarizeBy: none
+		sourceColumn: user_is_bot
+
+		annotation SummarizationSetBy = Automatic
+
+	column user_first_name
+		dataType: string
+		lineageTag: 7d37c2db-587b-4793-9910-c949ae45d316
+		summarizeBy: none
+		sourceColumn: user_first_name
+
+		annotation SummarizationSetBy = Automatic
+
+	column chat_id
+		dataType: int64
+		formatString: 0
+		lineageTag: 666b59c4-62d1-4aba-8172-2af5208848df
+		summarizeBy: sum
+		sourceColumn: chat_id
+
+		annotation SummarizationSetBy = Automatic
+
+	column chat_type
+		dataType: string
+		lineageTag: fc29a01b-ce3d-461f-831a-7da50833ab1d
+		summarizeBy: none
+		sourceColumn: chat_type
+
+		annotation SummarizationSetBy = Automatic
+
+	column mensagem
+		dataType: string
+		lineageTag: b49b9c70-3943-4f4a-a2e6-4572fd607a9a
+		summarizeBy: none
+		sourceColumn: mensagem
+
+		annotation SummarizationSetBy = Automatic
+
+	column data
+		dataType: dateTime
+		formatString: Long Date
+		lineageTag: 4620bed0-9b2e-4943-96e9-a2848aece8ac
+		summarizeBy: none
+		sourceColumn: data
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation UnderlyingDateTimeDataType = Date
+
+	partition fRegistros = m
+		mode: import
+		source =
+				let
+				    Source = Csv.Document(File.Contents(caminho),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
+				    #"Removed Columns" = Table.RemoveColumns(#"Promoted Headers",{"date", "context_date"}),
+				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns",{{"message_id", Int64.Type}, {"user_id", Int64.Type}, {"user_is_bot", type logical}, {"user_first_name", type text}, {"chat_id", Int64.Type}, {"chat_type", type text}, {"text", type text}, {"data-formt", type date}}),
+				    #"Renamed Columns" = Table.RenameColumns(#"Changed Type",{{"data-formt", "data"}, {"text", "mensagem"}}),
+				    #"Replaced Value" = Table.ReplaceValue(#"Renamed Columns","Dra.","Debora",Replacer.ReplaceText,{"user_first_name"}),
+				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Sr.","Sara",Replacer.ReplaceText,{"user_first_name"}),
+				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","Srta.","Suelen",Replacer.ReplaceText,{"user_first_name"}),
+				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","Dr.","Danielle",Replacer.ReplaceText,{"user_first_name"}),
+				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","Sra.","Selina",Replacer.ReplaceText,{"user_first_name"})
+				in
+				    #"Replaced Value4"
+
+	annotation PBI_NavigationStepName = Navigation
+
+	annotation PBI_ResultType = Table
+

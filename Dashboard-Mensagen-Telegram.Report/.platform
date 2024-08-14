@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "Report",
+    "displayName": "Dashboard-Mensagen-Telegram"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "5103baf8-7577-4803-a490-29e0f26ce81e"
+  }
+}
