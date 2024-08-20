@@ -85,7 +85,7 @@ table fRegistros
 		mode: import
 		source =
 				let
-				    Source = Csv.Document(File.Contents(caminho),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
+				    Source = Csv.Document(Web.Contents(caminho),[Delimiter=",", Columns=10, Encoding=65001, QuoteStyle=QuoteStyle.None]),
 				    #"Promoted Headers" = Table.PromoteHeaders(Source, [PromoteAllScalars=true]),
 				    #"Removed Columns" = Table.RemoveColumns(#"Promoted Headers",{"date", "context_date"}),
 				    #"Changed Type" = Table.TransformColumnTypes(#"Removed Columns",{{"message_id", Int64.Type}, {"user_id", Int64.Type}, {"user_is_bot", type logical}, {"user_first_name", type text}, {"chat_id", Int64.Type}, {"chat_type", type text}, {"text", type text}, {"data-formt", type date}}),
@@ -95,14 +95,10 @@ table fRegistros
 				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","Srta.","Suelen",Replacer.ReplaceText,{"user_first_name"}),
 				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","Dr.","Danielle",Replacer.ReplaceText,{"user_first_name"}),
 				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","Sra.","Selina",Replacer.ReplaceText,{"user_first_name"}),
-				    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","Ipsam quis voluptatum.","aaa",Replacer.ReplaceText,{"mensagem"}),
-				    #"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","Provident tempora asperiores asperiores omnis ut perferendis animi.","aaa",Replacer.ReplaceText,{"mensagem"}),
-				    #"Sorted Rows" = Table.Sort(#"Replaced Value6",{{"data", Order.Ascending}}),
-				    #"Replaced Value7" = Table.ReplaceValue(#"Sorted Rows","Exercitationem laboriosam illo libero.","bbbb",Replacer.ReplaceText,{"mensagem"}),
-				    #"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7","Dolor magni cum aliquid consequuntur nemo laudantium.","bbbb",Replacer.ReplaceText,{"mensagem"}),
-				    #"Replaced Value9" = Table.ReplaceValue(#"Replaced Value8","Vero debitis suscipit consectetur error asperiores.","bbbb",Replacer.ReplaceText,{"mensagem"})
+				    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","Ipsam quis voluptatum.","mensagem de exemplo",Replacer.ReplaceText,{"mensagem"}),
+				    #"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","Provident tempora asperiores asperiores omnis ut perferendis animi.","mensagem de exemplo",Replacer.ReplaceText,{"mensagem"})
 				in
-				    #"Replaced Value9"
+				    #"Replaced Value6"
 
 	annotation PBI_NavigationStepName = Navigation
 
