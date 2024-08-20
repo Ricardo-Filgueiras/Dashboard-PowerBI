@@ -5,7 +5,7 @@ table dCalendario
 	column Date
 		dataType: dateTime
 		isKey
-		formatString: General Date
+		formatString: Long Date
 		lineageTag: 46e149d9-b898-41b2-8f0d-db58e822ab90
 		summarizeBy: none
 		isNameInferred
@@ -17,6 +17,54 @@ table dCalendario
 	column mes_brev = FORMAT( dCalendario[Date] , "mmm / yyyy" )
 		dataType: string
 		lineageTag: c6b4a766-d345-4367-8a94-d3f5fdf12f12
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia_semana = WEEKDAY( dCalendario[Date] )
+		dataType: int64
+		formatString: 0
+		lineageTag: e48d2db5-bbc7-4594-b3e6-8f9fae8cc446
+		summarizeBy: none
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
+	column dia_semana_nome = ```
+			
+			SWITCH(
+			    TRUE()
+			    , dCalendario[dia_semana] = 1 , "Domingo" 
+			    , dCalendario[dia_semana] = 2 , "Segunda" 
+			    , dCalendario[dia_semana] = 3 , "Terça" 
+			    , dCalendario[dia_semana] = 4 , "Quarta" 
+			    , dCalendario[dia_semana] = 5 , "Quinta" 
+			    , dCalendario[dia_semana] = 6 , "Sexta" 
+			    , "Sabado"
+			)
+			```
+		dataType: string
+		lineageTag: 54d72dd9-3b03-4535-920e-7fb4f2374257
+		summarizeBy: none
+		isDataTypeInferred
+		sortByColumn: dia_semana
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'Semana Mes Ano' = CONCATENATE( dCalendario[semana Ano],    FORMAT( dCalendario[Date] , "° - mmm/ yyyy" )        )
+		dataType: string
+		lineageTag: 1b58cd4c-a6b8-4265-974b-90c3060a4390
+		summarizeBy: none
+		isDataTypeInferred
+		sortByColumn: 'semana Ano'
+
+		annotation SummarizationSetBy = Automatic
+
+	column 'semana Ano' = WEEKNUM( dCalendario[Date] , 11)
+		dataType: int64
+		formatString: 0
+		lineageTag: d51e2fe8-1d86-427f-b953-5b2cdf29281f
 		summarizeBy: none
 		isDataTypeInferred
 

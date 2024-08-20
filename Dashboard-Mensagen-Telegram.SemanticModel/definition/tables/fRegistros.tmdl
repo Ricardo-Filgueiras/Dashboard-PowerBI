@@ -72,6 +72,15 @@ table fRegistros
 
 		annotation UnderlyingDateTimeDataType = Date
 
+	column 'tamanho msg' = COUNTX( fRegistros, COUNT( fRegistros[mensagem] ))
+		dataType: int64
+		formatString: 0
+		lineageTag: 7ee88b31-d6eb-44d6-b768-6b655ccfbcec
+		summarizeBy: sum
+		isDataTypeInferred
+
+		annotation SummarizationSetBy = Automatic
+
 	partition fRegistros = m
 		mode: import
 		source =
@@ -85,9 +94,15 @@ table fRegistros
 				    #"Replaced Value1" = Table.ReplaceValue(#"Replaced Value","Sr.","Sara",Replacer.ReplaceText,{"user_first_name"}),
 				    #"Replaced Value2" = Table.ReplaceValue(#"Replaced Value1","Srta.","Suelen",Replacer.ReplaceText,{"user_first_name"}),
 				    #"Replaced Value3" = Table.ReplaceValue(#"Replaced Value2","Dr.","Danielle",Replacer.ReplaceText,{"user_first_name"}),
-				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","Sra.","Selina",Replacer.ReplaceText,{"user_first_name"})
+				    #"Replaced Value4" = Table.ReplaceValue(#"Replaced Value3","Sra.","Selina",Replacer.ReplaceText,{"user_first_name"}),
+				    #"Replaced Value5" = Table.ReplaceValue(#"Replaced Value4","Ipsam quis voluptatum.","aaa",Replacer.ReplaceText,{"mensagem"}),
+				    #"Replaced Value6" = Table.ReplaceValue(#"Replaced Value5","Provident tempora asperiores asperiores omnis ut perferendis animi.","aaa",Replacer.ReplaceText,{"mensagem"}),
+				    #"Sorted Rows" = Table.Sort(#"Replaced Value6",{{"data", Order.Ascending}}),
+				    #"Replaced Value7" = Table.ReplaceValue(#"Sorted Rows","Exercitationem laboriosam illo libero.","bbbb",Replacer.ReplaceText,{"mensagem"}),
+				    #"Replaced Value8" = Table.ReplaceValue(#"Replaced Value7","Dolor magni cum aliquid consequuntur nemo laudantium.","bbbb",Replacer.ReplaceText,{"mensagem"}),
+				    #"Replaced Value9" = Table.ReplaceValue(#"Replaced Value8","Vero debitis suscipit consectetur error asperiores.","bbbb",Replacer.ReplaceText,{"mensagem"})
 				in
-				    #"Replaced Value4"
+				    #"Replaced Value9"
 
 	annotation PBI_NavigationStepName = Navigation
 

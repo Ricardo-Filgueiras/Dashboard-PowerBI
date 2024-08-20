@@ -4,9 +4,74 @@ table Medidas
 	measure 'Qtde Mensagens' =
 			
 			
-			DISTINCTCOUNT( fRegistros[mensagem] )
+			DISTINCTCOUNT( fRegistros[message_id] )
 		formatString: 0
+		displayFolder: Medidas Base
 		lineageTag: 4f5c89d9-c0d6-4174-8332-0d61fdda13b9
+
+	measure 'rank por qtde msg' = ```
+			
+			VAR _rank =
+			RANKX(
+			    ALLSELECTED( fRegistros[user_first_name])
+			    , [Qtde Mensagens] 
+			    , 
+			    , DESC
+			)
+			
+			
+			RETURN _rank
+			```
+		formatString: 0
+		displayFolder: Medidas Base
+		lineageTag: 98d67285-7522-4971-969a-a2e1c93f4506
+
+	measure 'tamanho da mensagem' =
+			
+			VAR _tab =
+			CALCULATETABLE(
+			ADDCOLUMNS(
+			    SUMMARIZE(fRegistros, fRegistros[user_first_name], fRegistros[mensagem])
+			    , "tamanho_msg", LEN( fRegistros[mensagem] )
+			    )
+			)
+			
+			VAR _result =  MAXX( _tab, [tamanho_msg])
+			
+			RETURN _result
+		formatString: 0
+		displayFolder: Medidas Base
+		lineageTag: 5dd6a13b-941f-4289-9cf7-9dee5dd72e7f
+
+	measure 'mensagem mais enviada' = ```
+			
+			
+			VAR _tab = 
+			CALCULATETABLE( 
+				ADDCOLUMNS(
+				VALUES( fRegistros[mensagem] )
+				, "rank", Medidas[mensagem numero]
+				)
+			)
+			VAR _result = 
+			CALCULATETABLE(
+				VALUES(fRegistros[mensagem] )
+				, TOPN( 1 , _tab , [rank] ,DESC ) 
+			)
+			
+			
+			
+			RETURN MAXX( _result , fRegistros[mensagem] )
+			```
+		displayFolder: Medidas Base
+		lineageTag: 9e11003f-0030-4e12-b4e2-a6d665f77328
+
+	measure 'mensagem numero' =
+			
+			COUNTX( fRegistros , fRegistros[mensagem] )
+		formatString: 0
+		displayFolder: Medidas Base
+		lineageTag: 793d7bf0-88f7-4bf2-8ea4-d0b494e6fbd1
 
 	partition Medidas = m
 		mode: import

@@ -1,4 +1,5 @@
 relationship 34c3271a-4125-b2d6-cc2c-dea506985bcf
+	crossFilteringBehavior: bothDirections
 	fromColumn: fRegistros.data
 	toColumn: dCalendario.Date
 

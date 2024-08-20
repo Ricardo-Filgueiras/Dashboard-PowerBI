@@ -1,0 +1,18 @@
+EVALUATE
+
+VAR _tab = 
+CALCULATETABLE( 
+	ADDCOLUMNS(
+	VALUES( fRegistros[mensagem] )
+	, "rank", Medidas[mensagem numero]
+	)
+)
+VAR _result = 
+CALCULATETABLE(
+	VALUES(fRegistros[mensagem] )
+	, TOPN( 1 , _tab , [rank] ,DESC ) 
+)
+
+
+
+RETURN MAXX( _result , fRegistros[mensagem] )
